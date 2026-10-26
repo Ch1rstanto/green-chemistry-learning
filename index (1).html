@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Chemistry Learning — Design for Degradation</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{--forest:#153f32;--deep:#103529;--cream:#f5f8ed;--ink:#203d31;--muted:#53695b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--cream)}
+h1,h2,h3{font-family:Fraunces,serif;line-height:1.17}
+:focus-visible{outline:3px solid #d18b29;outline-offset:4px}
+.nav-button{color:#e4f2e2;border-radius:999px;padding:.65rem 1rem;transition:background .2s,transform .2s;white-space:nowrap}
+.nav-button:hover,.nav-button[aria-current="page"]{background:#367455;color:#fff}
+.nav-button:hover,.action:hover,.material-card:hover{transform:translateY(-3px)}
+.action{transition:transform .2s,box-shadow .2s;box-shadow:0 9px 20px #102f251c}
+.material-card{transition:transform .2s,box-shadow .2s;scroll-margin-top:24px}
+.material-card:hover{box-shadow:0 15px 35px #153f321a}
+.page{display:none;animation:arrive .35s ease both}.page.active{display:block}
+@keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.hero-art{position:relative;min-height:335px;background:radial-gradient(circle at 48% 46%,#e0f6be 0 29%,#a9d99b 30% 31%,transparent 32%),linear-gradient(135deg,#c9eaa8,#78ba8d);overflow:hidden;border-radius:2rem}
+.planet{position:absolute;width:215px;height:215px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 35% 30%,#b5e8df,#68b7ab 60%,#367d70);box-shadow:inset -20px -15px 30px #205a5580,0 22px 35px #245a3e45}
+.land{position:absolute;background:#368c59;border-radius:65% 35% 55% 45%;transform:rotate(-25deg)}
+.land.one{width:75px;height:48px;top:38px;left:30px}.land.two{width:85px;height:100px;top:95px;right:20px;transform:rotate(23deg)}
+.sprig{position:absolute;font-size:70px;filter:drop-shadow(0 9px 8px #315e3940)}
+.sprig.a{left:8%;bottom:8%;transform:rotate(-30deg)}.sprig.b{right:8%;top:7%;transform:rotate(30deg)}
+.toc a:hover,.reference a:hover{text-decoration:underline}
+/* Pemutar video: thumbnail + tombol play, iframe dimuat saat diklik */
+.yt-facade{position:relative;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#000 center/cover no-repeat}
+.yt-facade .play{position:absolute;inset:0;margin:auto;width:76px;height:54px;border-radius:14px;background:#e62117;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.yt-facade:hover .play{transform:scale(1.1)}
+.yt-facade .play::after{content:"";border-style:solid;border-width:11px 0 11px 19px;border-color:transparent transparent transparent #fff;margin-left:4px}
+@media(max-width:640px){.hero-art{min-height:270px}.planet{width:175px;height:175px}.nav-button{padding:.5rem .7rem;font-size:.85rem}}
+</style>
+</head>
+<body>
+<header style="background:var(--deep);color:#fff">
+  <div class="max-w-6xl mx-auto px-5 py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+    <div class="flex items-center gap-3"><span class="text-3xl" aria-hidden="true">🌿</span><span class="font-bold tracking-tight text-xl">Green Chemistry Learning</span></div>
+    <nav aria-label="Navigasi utama" class="flex gap-1 flex-wrap" id="nav">
+      <button type="button" class="nav-button" data-page="beranda">Beranda</button>
+      <button type="button" class="nav-button" data-page="video">Video YouTube</button>
+      <button type="button" class="nav-button" data-page="materi">Materi Podcast</button>
+      <button type="button" class="nav-button" data-page="tentang">Tentang Kami</button>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-5 py-10 md:py-16">
+
+  <!-- BERANDA -->
+  <section id="beranda" class="page active" aria-labelledby="hero-title">
+    <div class="grid lg:grid-cols-2 items-center gap-10 lg:gap-14">
+      <div>
+        <p class="inline-block rounded-full px-4 py-2 mb-6 font-bold text-[13px]" style="background:#e2f2cd;color:#245b36">BELAJAR KIMIA • JAGA BUMI</p>
+        <h1 id="hero-title" class="mb-5 font-bold text-[32px]">Kimia Hijau: Prinsip ke-10 — Design for Degradation</h1>
+        <h2 class="mb-5 text-2xl">Merancang Produk yang Ramah bagi Lingkungan</h2>
+        <p class="leading-relaxed mb-8 max-w-xl" style="color:var(--muted)">Produk kimia sebaiknya dirancang agar setelah digunakan dapat terurai menjadi zat yang lebih aman. Pendekatan ini membantu mengurangi penumpukan limbah dan dampaknya terhadap lingkungan—dengan tetap memperhatikan kondisi nyata tempat penguraiannya.</p>
+        <div class="flex flex-wrap gap-3">
+          <button type="button" data-page="video" class="action rounded-full px-6 py-3 font-bold" style="background:#153f32;color:#fff">▶ Tonton Video</button>
+          <button type="button" data-page="materi" class="action rounded-full px-6 py-3 font-bold border-2 border-[#153f32] bg-white" style="color:#153f32">Pelajari Materi →</button>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Ilustrasi planet bumi dikelilingi dedaunan">
+        <div class="planet"><div class="land one"></div><div class="land two"></div></div>
+        <span class="sprig a" aria-hidden="true">🌱</span><span class="sprig b" aria-hidden="true">🍃</span>
+      </div>
+    </div>
+    <div class="mt-12 rounded-2xl p-6 md:p-8 leading-relaxed" style="background:#e4f1d4;color:#245039">Prinsip ke-10 mengajak kita berpikir lebih jauh: apa yang terjadi pada suatu produk setelah masa pakainya berakhir?</div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video" class="page" aria-labelledby="video-heading">
+    <p class="uppercase tracking-widest font-bold mb-3 text-[13px]" style="color:#3a8050">BELAJAR MELALUI VIDEO</p>
+    <h1 id="video-heading" class="font-bold mb-7 text-[32px]">Video YouTube</h1>
+    <div class="rounded-3xl overflow-hidden shadow-xl bg-[#153f32]">
+      <div class="aspect-video w-full" id="player-box">
+        <button type="button" id="yt-facade" class="yt-facade" aria-label="Putar video: Kimia Hijau Prinsip ke-10"
+          style="background-image:url('https://i.ytimg.com/vi/g6oJKuqLmnM/hqdefault.jpg')">
+          <span class="play"></span>
+        </button>
+      </div>
+      <aside class="mx-5 my-5 p-5 rounded-2xl leading-relaxed" style="background:#e4f1d4;color:#245039">Jika video tidak dapat diputar di sini (karena pengaturan embedding, browser, atau jaringan), gunakan tombol “Tonton Langsung di YouTube” di bawah untuk membukanya di tab baru.</aside>
+    </div>
+    <div class="grid md:grid-cols-[1fr_auto] gap-6 mt-7 items-start">
+      <div>
+        <h2 class="font-bold mb-3 text-2xl">Kimia Hijau: Prinsip ke-10 — Design for Degradation</h2>
+        <p class="leading-relaxed mb-3">Simak penjelasan tentang pentingnya merancang produk kimia yang dapat terurai setelah digunakan, beserta penerapannya dalam kehidupan sehari-hari.</p>
+        <p class="font-semibold">Nur Safinah (2306103040041) · Halimatus Sadiah (2306103040026)</p>
+      </div>
+      <a class="action inline-block rounded-full px-6 py-3 font-bold text-center" style="background:#153f32;color:#fff"
+         href="https://www.youtube.com/watch?v=g6oJKuqLmnM" target="_blank" rel="noopener noreferrer">Tonton Langsung di YouTube ↗</a>
+    </div>
+  </section>
+
+  <!-- MATERI -->
+  <section id="materi" class="page" aria-labelledby="materi-heading">
+    <p class="uppercase tracking-widest font-bold mb-3 text-[13px]" style="color:#3a8050">CATATAN PEMBELAJARAN</p>
+    <h1 id="materi-heading" class="font-bold mb-3 text-[32px]">Materi Podcast</h1>
+    <p class="max-w-3xl leading-relaxed mb-8">Baca materi ini sebagai pendamping video atau sebagai naskah belajar mandiri. Mulailah dari daftar isi, lalu hubungkan setiap konsep dengan produk yang kamu temui sehari-hari.</p>
+
+    <nav class="toc rounded-3xl p-6 md:p-8 mb-9" style="background:#e4f1d4" aria-label="Daftar isi materi">
+      <h2 class="font-bold mb-4 text-2xl">Daftar Isi</h2>
+      <ol class="grid md:grid-cols-2 gap-x-8 gap-y-3 list-decimal pl-5">
+        <li><a href="#bagian-1">Pengertian Kimia Hijau</a></li>
+        <li><a href="#bagian-2">Prinsip ke-10 Design for Degradation</a></li>
+        <li><a href="#bagian-3">Tujuan dan pentingnya prinsip ke-10</a></li>
+        <li><a href="#bagian-4">Desain produk dan kemudahan penguraian</a></li>
+        <li><a href="#bagian-5">Contoh penerapan sehari-hari</a></li>
+        <li><a href="#bagian-6">Dampak limbah yang sulit terurai</a></li>
+        <li><a href="#bagian-7">Kesimpulan dan penerapan</a></li>
+      </ol>
+    </nav>
+
+    <div class="grid gap-5" id="cards"></div>
+
+    <aside class="rounded-3xl p-6 md:p-8 mt-8" style="background:#d9edbe">
+      <h2 class="font-bold mb-3 text-2xl">💡 Tahukah Kamu?</h2>
+      <p class="leading-relaxed">Biodegradasi di fasilitas kompos, tanah, dan laut bisa berlangsung sangat berbeda. Untuk menilai klaim lingkungan, tanyakan kondisi pengujiannya dan perhatikan baik laju penguraian maupun sifat zat yang dihasilkan.</p>
+    </aside>
+    <aside class="rounded-3xl p-6 md:p-8 mt-5" style="background:#153f32;color:#fff">
+      <h2 class="font-bold mb-3 text-2xl">Ringkasan Materi</h2>
+      <p class="leading-relaxed">Kimia hijau mencegah masalah lingkungan melalui desain. Prinsip ke-10 menekankan produk yang terurai menjadi hasil yang tidak berbahaya setelah digunakan. Sifat bahan dan kondisi lingkungan menentukan keberhasilannya; karena itu, uji penguraian dan hasil akhirnya sama-sama penting.</p>
+    </aside>
+
+    <section class="reference mt-10" aria-labelledby="references-heading">
+      <h2 id="references-heading" class="font-bold mb-4 text-2xl">Referensi untuk dibaca lebih lanjut</h2>
+      <ul class="space-y-3 list-disc pl-6">
+        <li><a class="underline underline-offset-4" href="https://www.epa.gov/greenchemistry/basics-green-chemistry" target="_blank" rel="noopener noreferrer">US EPA — Basics of Green Chemistry ↗</a></li>
+        <li><a class="underline underline-offset-4" href="https://www.epa.gov/greenchemistry/12-principles-green-chemistry" target="_blank" rel="noopener noreferrer">US EPA — 12 Principles of Green Chemistry ↗</a></li>
+        <li><a class="underline underline-offset-4" href="https://www.acs.org/greenchemistry/principles.html" target="_blank" rel="noopener noreferrer">American Chemical Society — 12 Principles of Green Chemistry ↗</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="tentang" class="page" aria-labelledby="about-heading">
+    <p class="uppercase tracking-widest font-bold mb-3 text-[13px]" style="color:#3a8050">DI BALIK MEDIA BELAJAR</p>
+    <h1 id="about-heading" class="font-bold mb-4 text-[32px]">Tentang Kami</h1>
+    <p class="leading-relaxed max-w-3xl mb-8">Website ini dikembangkan sebagai media pembelajaran digital untuk mengenalkan prinsip ke-10 Kimia Hijau kepada siswa SMA. Karya ini merupakan bagian dari tugas mata kuliah Program Studi Pendidikan Kimia, Fakultas Keguruan dan Ilmu Pendidikan, Universitas Syiah Kuala.</p>
+    <div class="grid md:grid-cols-2 gap-5 mb-8">
+      <article class="rounded-3xl p-7" style="background:#e4f1d4"><span class="text-3xl" aria-hidden="true">🌿</span><h2 class="font-bold mt-4 text-2xl">Nur Safinah</h2><p class="mt-2">2306103040041</p></article>
+      <article class="rounded-3xl p-7" style="background:#e4f1d4"><span class="text-3xl" aria-hidden="true">🌱</span><h2 class="font-bold mt-4 text-2xl">Halimatus Sadiah</h2><p class="mt-2">2306103040026</p></article>
+    </div>
+    <div class="rounded-3xl bg-white p-6 md:p-8 border border-[#dce8d5] space-y-3">
+      <h2 class="font-bold mb-4 text-2xl">Identitas Akademik</h2>
+      <p>Program Studi: Pendidikan Kimia</p>
+      <p>Fakultas: Fakultas Keguruan dan Ilmu Pendidikan</p>
+      <p>Universitas: Universitas Syiah Kuala</p>
+      <div class="pt-3">
+        <label class="block font-bold mb-2" for="course">Mata Kuliah</label>
+        <input id="course" class="w-full rounded-xl border border-[#a9c4a7] px-4 py-3 focus:border-[#153f32]" type="text" autocomplete="off" aria-describedby="course-help" placeholder="Tulis nama mata kuliah">
+        <p id="course-help" class="mt-2" style="color:var(--muted)">Isi nama mata kuliah di sini. Isian berlaku selama halaman ini terbuka.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mt-10" style="background:#103529;color:#fff">
+  <div class="max-w-6xl mx-auto px-5 py-8 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+    <p class="font-bold">🌿 Green Chemistry Learning</p>
+    <p>Pendidikan Kimia · FKIP · Universitas Syiah Kuala</p>
+    <button type="button" id="back-top" class="rounded-full border border-white/50 px-4 py-2 hover:bg-white/10">↑ Kembali ke atas</button>
+  </div>
+</footer>
+
+<script>
+// ====== KONTEN & PENGATURAN (mudah diedit) ======
+const VIDEO_ID = "g6oJKuqLmnM";
+const materi = [
+  ["🌿","01 / Pengertian Kimia Hijau","Kimia hijau adalah pendekatan merancang produk dan proses kimia untuk mengurangi atau menghilangkan penggunaan serta pembentukan zat berbahaya. Artinya, pencemaran dicegah sejak tahap perancangan, bukan hanya dibersihkan setelah terjadi. Misalnya, ilmuwan dapat memilih bahan baku yang lebih aman, menghemat energi dalam reaksi, dan mengurangi limbah. Dua belas prinsip kimia hijau memberi panduan untuk menilai pilihan tersebut sepanjang siklus hidup produk."],
+  ["♻️","02 / Prinsip ke-10: Design for Degradation","Prinsip ke-10 menyatakan bahwa produk kimia hendaknya dirancang agar, setelah menjalankan fungsinya, produk tersebut terurai menjadi hasil penguraian yang tidak berbahaya dan tidak bertahan lama di lingkungan. “Terurai” berarti struktur kimianya berubah melalui proses seperti reaksi dengan air, cahaya, atau aktivitas mikroorganisme. Produk yang pecah menjadi bagian kecil belum tentu benar-benar terurai secara kimia; bagian-bagian itu masih dapat menetap di lingkungan."],
+  ["🌍","03 / Tujuan dan pentingnya prinsip ke-10","Tujuannya adalah mengurangi zat yang terus menumpuk setelah digunakan, menurunkan peluang paparan pada organisme, serta membatasi beban pengelolaan limbah. Umur pakai produk perlu seimbang: cukup stabil ketika dipakai, tetapi dapat terurai melalui jalur yang sesuai sesudahnya. Karena itu, perancang perlu mempertimbangkan penggunaan, cara pembuangan, hasil penguraian, dan lingkungan tujuan—misalnya tanah, air, atau fasilitas kompos—sejak awal."],
+  ["🧪","04 / Desain produk dan kemudahan penguraian","Susunan molekul menentukan cara suatu bahan berinteraksi dengan air, cahaya, dan enzim. Ikatan yang dapat dipecah dalam kondisi yang relevan dapat membantu penguraian; sebaliknya, struktur yang sangat stabil dapat bertahan lebih lama. Namun, kecepatan penguraian tidak hanya ditentukan oleh nama bahan atau label “biodegradable”. Suhu, air, oksigen, mikroorganisme, pH, dan waktu semuanya berpengaruh. Perancang juga harus menguji zat hasil penguraian: bahan yang dapat terurai tidak otomatis aman dalam semua kondisi."],
+  ["🧺","05 / Contoh penerapan sehari-hari","Salah satu contoh ialah bahan kemasan tertentu yang dirancang untuk diproses melalui pengomposan pada kondisi yang ditentukan. Contoh lain adalah pengembangan bahan pembersih yang setelah digunakan dapat diuraikan oleh mikroorganisme, serta pemilihan bahan berbasis selulosa untuk aplikasi tertentu. Tidak semua kemasan “kompos” cocok untuk kompos rumahan; sebagian memerlukan fasilitas industri. Gunakan ulang dan kurangi konsumsi ketika memungkinkan, lalu ikuti petunjuk pembuangan setempat."],
+  ["💧","06 / Dampak limbah yang sulit terurai","Limbah yang bertahan lama dapat terakumulasi di tanah atau perairan dan memperpanjang kemungkinan organisme terpapar. Sebagian bahan dapat terpecah menjadi fragmen kecil yang lebih sulit dikumpulkan. Dampaknya berbeda-beda menurut jenis zat, jumlah, lokasi, dan cara pengelolaan; kita tidak boleh menganggap semua limbah memiliki tingkat bahaya yang sama. Pencegahan melalui desain, pemilahan, pengurangan penggunaan, dan pengelolaan yang tepat saling melengkapi."],
+  ["🌱","07 / Kesimpulan dan penerapan","Design for Degradation mengajak kita memikirkan akhir perjalanan produk sejak tahap awal pembuatannya. Tanyakan: dapatkah produk menjalankan tugasnya, bagaimana ia terurai, apa hasil penguraiannya, dan apakah kondisi pembuangan nyata mendukung proses itu? Dalam kehidupan sehari-hari, baca klaim lingkungan secara kritis, gunakan barang seperlunya, pilih opsi yang sesuai fasilitas pengolahan lokal, dan buang limbah dengan benar. “Dapat terurai” bukan jaminan bahwa bahan selalu aman."]
+];
+document.getElementById("cards").innerHTML = materi.map((m, i) => `
+  <article id="bagian-${i+1}" class="material-card bg-white rounded-3xl p-6 md:p-8 border border-[#dce8d5]">
+    <span aria-hidden="true" class="text-3xl">${m[0]}</span>
+    <h2 class="font-bold mt-3 mb-3 text-2xl">${m[1]}</h2>
+    <p class="leading-relaxed">${m[2]}</p>
+  </article>`).join("");
+
+// ====== PEMUTAR YOUTUBE ======
+// Iframe baru dibuat saat tombol diklik (lebih ringan, dan menghindari embed
+// yang diblokir saat halaman belum siap). Memakai youtube-nocookie.com.
+document.getElementById("yt-facade").addEventListener("click", () => {
+  const f = document.createElement("iframe");
+  f.className = "w-full h-full border-0";
+  f.src = "https://www.youtube-nocookie.com/embed/" + VIDEO_ID + "?autoplay=1&rel=0&modestbranding=1";
+  f.title = "Video pembelajaran Kimia Hijau Prinsip ke-10: Design for Degradation";
+  f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  f.referrerPolicy = "strict-origin-when-cross-origin";
+  f.allowFullscreen = true;
+  document.getElementById("player-box").replaceChildren(f);
+});
+
+// ====== NAVIGASI HALAMAN ======
+const pageIds = ["beranda", "video", "materi", "tentang"];
+function showPage(id, updateHash = true) {
+  const page = pageIds.includes(id) ? id : "beranda";
+  pageIds.forEach(name => {
+    const active = name === page;
+    document.getElementById(name).classList.toggle("active", active);
+    const nav = document.querySelector('#nav [data-page="' + name + '"]');
+    if (active) nav.setAttribute("aria-current", "page"); else nav.removeAttribute("aria-current");
+  });
+  if (updateHash && location.hash !== "#" + page) history.replaceState(null, "", "#" + page);
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+document.querySelectorAll("button[data-page]").forEach(b => b.addEventListener("click", () => showPage(b.dataset.page)));
+document.querySelectorAll('.toc a[href^="#bagian-"]').forEach(link => link.addEventListener("click", e => {
+  e.preventDefault();
+  showPage("materi");
+  document.querySelector(link.getAttribute("href")).scrollIntoView({behavior: "smooth", block: "start"});
+}));
+document.getElementById("back-top").addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"}));
+window.addEventListener("hashchange", () => showPage(location.hash.slice(1), false));
+showPage(location.hash.slice(1), false);
+</script>
+</body>
+</html>
